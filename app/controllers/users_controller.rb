@@ -1,25 +1,39 @@
 class UsersController < ApplicationController
 
-  def new
-    @user = User.new
-  end
+  def home
 
-  def create
-    @user = User.new(user_params)
-    @user.save
-    redirect_to user_path(@user)
   end
 
   def show
     @user = User.find(params[:id])
+    # byebug
   end
 
   def index
     @users = User.all
   end
 
+  def new
+    # debugger
+    @user = User.new
+  end
+
+  def create
+    @user = User.new(user_params)
+    if @user.save
+      session[:id] = @user.id
+      redirect_to user_path(@user)
+    else
+      redirect_to new_user_path
+    end
+  end
+
   def edit
-    @user = User.find(params[:id])
+    if logged_in?
+      @user = User.find(params[:id])
+    else
+      redirect_to login_path
+    end
     # debugger
   end
 
@@ -29,14 +43,14 @@ class UsersController < ApplicationController
     redirect_to user_path(@user)
   end
 
-  def delete
+  def destroy
     @user = User.find(params[:id])
-    debugger
+    # debugger
     @user.destroy
     redirect_to users_path
   end
 
-  private
+private
 
   def user_params
     params.require(:user).permit(:name, :password, :password_confirmation)

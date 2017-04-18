@@ -1,0 +1,19 @@
+
+<br />
+
+<h1>Card Info</h1>
+<%= @card.name %><br />
+<% unless !@card.image_url? %>
+  <%= image_tag @card.image_url %>
+  <% end %>
+
+
+
+<%= form_for @card, method: :patch do |f| %>
+<p>
+  Deck Name: <%= f.collection_select :decks, Deck.order('name asc'), :id, :name %><br />
+</p>
+<%= f.submit "Add card to deck"%>
+<% end %>
+
+<!-- link to add card to deck -->

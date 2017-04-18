@@ -16,3 +16,5 @@ def cards_hash #loading db with card info
   end
   result
 end
+
+cards_hash

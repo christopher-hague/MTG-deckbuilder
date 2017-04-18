@@ -7,6 +7,7 @@ end
 
 gem 'rest-client'
 gem 'json'
+gem 'pg'
 
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'

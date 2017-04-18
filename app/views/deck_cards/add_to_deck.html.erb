@@ -1,0 +1,4 @@
+<%= form_for @card do |f|%>
+<%= f.collection_select :deck_id, Deck.all, :id, :name %>
+<%= f.submit %>
+<% end %>

@@ -1,13 +1,31 @@
 class DecksController < ApplicationController
   def new
-    @deck = Deck.new
+    if logged_in?
+      @deck = Deck.new
+    else
+      flash[:notice] = "You have to be logged in to do that."
+      redirect_to login_path
+    end
   end
 
   def create
-    @deck = Deck.new
+    # debugger
+    @deck = Deck.new(user_id: session[:id], name: params[:deck][:name])
+    if @deck.save
+      redirect_to user_path(session[:id])
+    else
+      render :new
+    end
   end
 
-  private
+  def show
+    @deck = Deck.find(params[:id])
+    # debugger
+  end
 
-  
+  def update
+    # debugger
+  end
+
+
 end

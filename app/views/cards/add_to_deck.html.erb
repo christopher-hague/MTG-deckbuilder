@@ -1,0 +1,3 @@
+<%= form_for @card do |f| %>
+<%= f.collection_select :card_id, Card.all, :id, :name %>
+<% end %>

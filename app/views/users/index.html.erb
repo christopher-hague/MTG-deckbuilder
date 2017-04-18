@@ -1,5 +1,5 @@
 <% @users.each do |user| %>
-  <%= user.name %>
+  <%= link_to user.name, user_path(user) %>
 <% end %>
 
 <!-- show each user, link to user show page, which will contain links to the show page of each of their decks -->
