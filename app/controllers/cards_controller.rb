@@ -10,7 +10,8 @@ class CardsController < ApplicationController
   end
 
   def index
-    @cards = Card.all
+    # @cards = Card.all
+    @cards = Card.order(:name).page params[:page]
     # @cards = Card.all.paginate(:page => params[:page], :per_page => 30)
   end
 
@@ -24,13 +25,13 @@ class CardsController < ApplicationController
     end
   end
 
-  def search
-    @cards = Card.where(name: params[:query])
-    # debugger
-    flash[:results] = "Here are your results"
-    render :index
+
+  def search_results
+    @cards = Card.where("upper(cards.name) like upper(?)", "%#{params[:query]}%")
+   flash[:results] = "Here are your results for: #{params[:query]}"
   end
 
+  
 
 
   # private

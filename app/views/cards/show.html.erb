@@ -8,12 +8,13 @@
   <% end %>
 
 
-
-<%= form_for @card, method: :patch do |f| %>
-<p>
-  Deck Name: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
-</p>
-<%= f.submit "Add card to deck"%>
+<%if logged_in?  %>
+  <%= form_for @card, method: :patch do |f| %>
+  <p>
+    Deck Name: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
+  </p>
+  <%= f.submit "Add card to deck"%>
+  <% end %>
 <% end %>
 
 <!-- link to add card to deck -->

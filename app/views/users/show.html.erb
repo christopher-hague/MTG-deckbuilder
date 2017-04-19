@@ -1,13 +1,15 @@
 <h1><%= @user.name %></h1><br>
 
+
+
+<h2>Decks:</h2>
+<% @user.decks.each_with_index do |deck, index| %>
+<h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
+<% end %>
 <% if logged_in? && authenticate?%>
   <%= link_to "Create New Deck", new_deck_path %>
   <p></p>
       <%= form_tag "/users/#{@user.id}", method: "delete" do %>
-      <%= submit_tag "delete player" %>
+      <%= submit_tag "Delete Player" %>
     <% end %>
-<% end %>
-
-<% @user.decks.each_with_index do |deck, index| %>
-<h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
 <% end %>

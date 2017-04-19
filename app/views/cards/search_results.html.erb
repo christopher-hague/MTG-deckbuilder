@@ -1,0 +1,14 @@
+<br />
+<br />
+<%= form_tag search_result_path, method: "get" do %>
+<%= text_field_tag :query%>
+<%= submit_tag "Search"%>
+<% end %>
+<br />
+<% if flash[:results] %>
+  <%= flash[:results] %>
+<% end %>
+
+<% @cards.sort_by{ |card| card.name}.each do |card|  %>
+  <li><%= link_to card.name, card_path(card) %></li>
+<% end.sort %>
