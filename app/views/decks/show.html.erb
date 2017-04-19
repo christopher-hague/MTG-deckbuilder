@@ -1,6 +1,7 @@
 
 
 <h1><%= @deck.name %></h1>
+<h3><%= @deck.cards.count %> total cards</h3>
   <% if session[:id] == @deck.user.id %>
     <%= link_to "View and add cards to deck", cards_path %><br>
   <% end %>
@@ -13,3 +14,15 @@
       <li><%= link_to "#{count}x #{name}", Card.find_by(name: name) %></li>
     <% end %>
 </ul>
+
+
+<!-- button -->
+<%= form_tag sample_path(@deck.id), method: :get do %>
+  <%= submit_tag "Sample" %>
+<% end %>
+
+<% if @sample %>
+  <% @sample.each do |card| %>
+    <%= image_tag card %>
+  <% end %>
+<% end %>

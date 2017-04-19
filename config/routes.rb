@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   patch '/cards/:id', to: 'cards#deck'
 
 
+  get '/decks/:id/sample', to: 'decks#sample_hand', as: :sample
   resources :decks, only: [:new, :create, :show]
   patch '/decks/:id', to: 'decks#update', as: :update
 

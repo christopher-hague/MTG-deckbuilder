@@ -28,5 +28,12 @@ class DecksController < ApplicationController
     # debugger
   end
 
+  def sample_hand
+    @deck = Deck.find(params[:id])
+    @shuffled_deck = Deck.find(params[:id])
+    @sample = @shuffled_deck.cards.map {|card| card.image_url}.shuffle[0..6]
+    render :show
+  end
+
 
 end

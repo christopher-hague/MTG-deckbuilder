@@ -31,8 +31,6 @@ class CardsController < ApplicationController
    flash[:results] = "Here are your results for: #{params[:query]}"
   end
 
-  
-
 
   # private
   #
