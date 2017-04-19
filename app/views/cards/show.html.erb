@@ -11,7 +11,7 @@
 
 <%= form_for @card, method: :patch do |f| %>
 <p>
-  Deck Name: <%= f.collection_select :decks, Deck.order('name asc'), :id, :name %><br />
+  Deck Name: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
 </p>
 <%= f.submit "Add card to deck"%>
 <% end %>

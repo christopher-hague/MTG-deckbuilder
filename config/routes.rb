@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :users
 
 
+  get '/cards/search', to: 'cards#search', as: :search
   resources :cards, only: [:show, :index]
   patch '/cards/:id', to: 'cards#deck'
 
