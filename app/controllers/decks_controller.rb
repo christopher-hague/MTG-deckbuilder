@@ -19,6 +19,7 @@ class DecksController < ApplicationController
   end
 
   def show
+    @user = User.find(session[:id])
     @deck = Deck.find(params[:id])
     # debugger
   end

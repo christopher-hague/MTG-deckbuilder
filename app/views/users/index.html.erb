@@ -1,5 +1,8 @@
+<br />
+<br />
+<h1>All Users</h1>
 <% @users.each do |user| %>
-  <%= link_to user.name, user_path(user) %>
+  <h3><%= link_to user.name, user_path(user) %></h3>
 <% end %>
 
 <!-- show each user, link to user show page, which will contain links to the show page of each of their decks -->
