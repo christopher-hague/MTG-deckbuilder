@@ -15,17 +15,17 @@
         <li role="presentation"><%= link_to 'Home', home_path%></li>
         <% if logged_in?%>
         <li role="presentation"><%= link_to "#{User.find(session[:id]).name}", user_path(session[:id])%></li>
+        <li role="presentation"><%= link_to 'My Decks', user_path(session[:id])%></li>
           <li role="presentation"><%= link_to 'All Players', users_path%></li>
-          <li role="presentation"><%= link_to "Rules", rules_path%></li>
-          <li role="presentation"><%= link_to 'My Decks', user_path(session[:id])%></li>
           <li role="presentation"><%= link_to "See All Cards", cards_path%></li>
+          <li role="presentation"><%= link_to "Rules", rules_path%></li>
           <li role="presentation"><%= link_to "Log out", logout_path%></li>
         <% else %>
           <li role="presentation" ><%= link_to 'Sign Up Here', new_user_path %></li>
           <li role="presentation"><%= link_to "Log in", login_path%></li>
-          <li role="presentation"><%= link_to "Rules", rules_path%></li>
           <li role="presentation"><%= link_to 'All Players', users_path%></li>
           <li role="presentation"><%= link_to "See All Cards", cards_path%></li>
+          <li role="presentation"><%= link_to "Rules", rules_path%></li>
         <% end %>
 
       </ul>

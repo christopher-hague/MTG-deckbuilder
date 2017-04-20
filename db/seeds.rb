@@ -11,7 +11,7 @@ def cards_hash #loading db with card info
     cards_hash["cards"].each do |card|
 
       Card.create(name: card["name"], image_url: card["imageUrl"])
-      Card.create(name: card["name"], image_url: card["imageUrl"], type:card["type"], text: card["text"])
+
     end
     counter += 1
   end

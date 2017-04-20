@@ -9,9 +9,9 @@
 <% end %>
 
 <% if logged_in? && authenticate?%>
-  <%= link_to "Create New Deck", new_deck_path %>
+  <h2><%= link_to "Create New Deck", new_deck_path %></h2>
   <p></p>
       <%= form_tag "/users/#{@user.id}", method: "delete" do %>
-      <%= submit_tag "Delete Player" %>
+      <%= submit_tag "Delete Target Player" %>
     <% end %>
 <% end %>

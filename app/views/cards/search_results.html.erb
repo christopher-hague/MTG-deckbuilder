@@ -1,13 +1,14 @@
 <br />
 <br />
 <%= form_tag search_result_path, method: "get" do %>
-<%= text_field_tag :query%>
-<%= submit_tag "Search"%>
+<h3>Search for a card by name:  <%= text_field_tag :query%> <%= submit_tag "Search"%></h3>
+
 <% end %>
 <br />
-<% if flash[:results] %>
+<h2><% if flash[:results] %>
   <%= flash[:results] %>
 <% end %>
+</h2>
 
 <ul>
   <% @cards.sort_by{ |card| card.name}.each do |card|  %>
