@@ -17,7 +17,7 @@ class SessionsController < ApplicationController
 
   def destroy
     session.destroy
-    redirect_to users_path
+    redirect_to home_path
   end
 end
 

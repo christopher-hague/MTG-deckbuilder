@@ -2,9 +2,11 @@ class CardsController < ApplicationController
 
   def show
     if logged_in?
+      @deck_card = DeckCard.new
       @user = User.find(session[:id])
       @card = Card.find(params[:id])
     else
+      session.destroy
       @card = Card.find(params[:id])
     end
   end

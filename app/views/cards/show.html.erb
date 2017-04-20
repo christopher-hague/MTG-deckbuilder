@@ -8,16 +8,19 @@
   <% end %>
 
 
-<%if logged_in?  %>
-  <%= form_for @card, method: :patch do |f| %>
+<%if logged_in? && authenticate? %>
+  <%= form_for @deck_card do |f| %>
   <p>
-    Add card to: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
+    Add card to: <%= f.collection_select :deck_id, @user.decks.order('name asc'), :id, :name %>
+    <%= f.hidden_field :card_id, value: @card.id %>
+    <br />
+    How many: <%= number_field_tag :quantity, 1, min: 1 %>
   </p>
   <%= f.submit "ADD", class: "btn btn-primary"%>
   <% end %>
 <% end %>
 
-<%if logged_in?  %>
+<%if logged_in? && authenticate? %>
   <%= form_for @card, method: :delete do |f| %>
   <p>
     Delete card from: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />

@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   get '/', to: 'users#home', as: :home
   resources :users
-
+  resources :deck_cards, only: [:create]
 
   get '/cards/search', to: 'cards#search', as: :search
   get '/cards/search_results', to: 'cards#search_results', as: :search_result
