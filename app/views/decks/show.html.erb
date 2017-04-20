@@ -6,12 +6,14 @@
     <%= link_to "View and add cards to deck", cards_path %><br>
   <% end %>
 
+  <%= flash[:message] %>
 <ul>
   <% cards_count = @deck.cards.each_with_object(Hash.new(0)) do |card, object|  %>
     <% object[card.name] += 1  %>
     <% end %>
     <% cards_count.each do |name, count| %>
       <li><%= link_to "#{count}x #{name}", Card.find_by(name: name) %></li>
+
     <% end %>
 </ul>
 
