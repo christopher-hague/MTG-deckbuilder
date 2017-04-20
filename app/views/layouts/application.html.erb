@@ -9,15 +9,24 @@
   </head>
 
   <body>
-      <% if logged_in?%>
-      <%= link_to "Log out", logout_path%>
-      <%= link_to 'My Decks', user_path(session[:id]) %>
+    <nav role="navigation" class="bg">
 
-      <% else %>
-      <%= link_to "Log in", login_path %>
-      <% end %>
+      <ul class= "nav nav-tabs">
+        <li role="presentation"><%= link_to 'Home', home_path%></li>
+        <% if logged_in?%>
+          <li role="presentation"><%= link_to "Log out", logout_path%></li>
+          <li role="presentation"><%= link_to 'All Players', users_path%></li>
+          <li role="presentation"><%= link_to 'My Decks', user_path(session[:id])%></li>
+          <li role="presentation"><%= link_to "See All Cards", cards_path%></li>
+        <% else %>
+          <li role="presentation"><%= link_to "Log in", login_path%></li>
+          <li role="presentation"><%= link_to 'All Players', users_path%></li>
+          <li role="presentation"><%= link_to "See All Cards", cards_path%></li>
+        <% end %>
 
-      <%= link_to "See All Cards", cards_path %>
+      </ul>
+
+    </nav>
     <%= yield %>
   </body>
 </html>

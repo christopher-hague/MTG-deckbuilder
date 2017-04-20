@@ -1,14 +1,21 @@
 <h1>Create User</h1>
 
 <%= form_for(@user) do |f| %>
-  <%= f.label :name %>
-  <%= f.text_field :name %><br>
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: "form-control" %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label :password %>
+    <%= f.password_field :password, class:"form-control" %><br>
 
-  <%= f.label :password %>
-  <%= f.password_field :password %><br>
+  </div>
+  <div class="form-group">
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation, class:"form-control" %><br>
+
+  </div>
+  <%= f.submit "Create Player", class:"btn btn-primary" %>
 
 
-  <%= f.label :password_confirmation %>
-  <%= f.password_field :password_confirmation %><br>
-  <%= f.submit %>
 <% end %>

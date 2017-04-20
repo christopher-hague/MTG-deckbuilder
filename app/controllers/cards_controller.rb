@@ -25,19 +25,18 @@ class CardsController < ApplicationController
     end
   end
 
+  def remove_card
+    @deck = Deck.find(params[:card][:decks])
+    @card = @deck.cards.find(params[:id])
+    @card.delete
+    flash[:message] = "Deleted from your deck!"
+    redirect_to deck_path(@deck)
+  end
 
   def search_results
     @cards = Card.where("upper(cards.name) like upper(?)", "%#{params[:query]}%")
    flash[:results] = "Here are your results for: #{params[:query]}"
   end
 
-
-  # private
-  #
-  # def sorted_by
-  #   <% @cards.sort_by{ |card| card.name}.each do |card|  %>
-  #     <li><%= link_to card.name, card_path(card) %></li>
-  #   <% end.sort %>
-  # end
 
 end

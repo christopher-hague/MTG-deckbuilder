@@ -6,8 +6,10 @@
 
 
 
-  <% @cards.sort_by{ |card| card.name}.each do |card|  %>
+  <ul>
+    <% @cards.sort_by{ |card| card.name}.each do |card|  %>
     <li><%= link_to card.name, card_path(card) %></li>
   <% end.sort %>
+</ul>
 
 <%= paginate @cards %>

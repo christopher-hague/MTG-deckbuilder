@@ -9,6 +9,8 @@
   <%= flash[:results] %>
 <% end %>
 
-<% @cards.sort_by{ |card| card.name}.each do |card|  %>
-  <li><%= link_to card.name, card_path(card) %></li>
-<% end.sort %>
+<ul>
+  <% @cards.sort_by{ |card| card.name}.each do |card|  %>
+    <li><%= link_to card.name, card_path(card) %></li>
+  <% end.sort %>
+</ul>

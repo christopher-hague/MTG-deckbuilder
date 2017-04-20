@@ -19,13 +19,13 @@ class DecksController < ApplicationController
   end
 
   def show
-    @user = User.find(session[:id])
     @deck = Deck.find(params[:id])
+
     # debugger
   end
 
-  def update
-    # debugger
+  def delete_card
+
   end
 
   def sample_hand
@@ -33,6 +33,12 @@ class DecksController < ApplicationController
     @shuffled_deck = Deck.find(params[:id])
     @sample = @shuffled_deck.cards.map {|card| card.image_url}.shuffle[0..6]
     render :show
+  end
+
+  def delete
+    @deck = Deck.find(params[:id])
+    @deck.delete
+    redirect_to user_path(session[:id])
   end
 
 
