@@ -1,11 +1,13 @@
 <h1><%= @user.name %></h1><br>
 
 
-
-<h2>Decks:</h2>
-<% @user.decks.each_with_index do |deck, index| %>
-<h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
+<% if @user.decks.present? %>
+  <h2>Here are your decks:</h2>
+  <% @user.decks.each_with_index do |deck, index| %>
+  <h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
+  <% end %>
 <% end %>
+
 <% if logged_in? && authenticate?%>
   <%= link_to "Create New Deck", new_deck_path %>
   <p></p>

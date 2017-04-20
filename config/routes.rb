@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   patch '/decks/:id', to: 'decks#update', as: :update
   delete '/decks/:id', to: 'decks#delete', as: :delete_deck
 
+  get '/rules', to: 'rules#index', as: :rules
 
 
   get '/login', to: 'sessions#new', as: 'login'

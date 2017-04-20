@@ -1,14 +1,29 @@
 
 
+
   <% if session[:id] == @deck.user.id %>
-    <h1><%= @deck.name %></h1>
-    <%= link_to "View and add cards to deck", cards_path, class: "btn btn-primary" %><br>
-    <br />
-    <%= link_to 'Delete this deck', delete_deck_path, method: 'delete', :data =>{:confirm =>'Are you SURE??'}, class: "btn btn-primary" %>
+  <br />
+</br/>
+  <div class="row">
+    <div class="col-md-4"><h1><%= @deck.name %></h1></div>
+    <div class="col-md-5"><%= link_to "View and add cards to deck", cards_path, class: "btn btn-primary" %></div>
+    <div class="col-md-3"><%= link_to 'Delete this deck', delete_deck_path, method: 'delete', :data =>{:confirm =>'Are you SURE??'}, class: "btn btn-primary" %></div>
+    </div>
+
     <h3><%= @deck.cards.count %> total cards</h3>
     <% else %>
       <h1><%= @deck.name %></h1>
       <h3><%= @deck.cards.count %> total cards</h3>
+  <% end %>
+  <%= form_tag sample_path(@deck.id), method: :get do %>
+  <%= submit_tag "Sample" %>
+  <% end %>
+
+
+  <% if @sample %>
+  <% @sample.each do |card| %>
+  <%= image_tag card, width:"14%"%>
+  <% end %>
   <% end %>
 
   <%= flash[:message] %>
@@ -26,13 +41,3 @@
 
 
 <!-- button -->
-<%= form_tag sample_path(@deck.id), method: :get do %>
-  <%= submit_tag "Sample" %>
-<% end %>
-
-
-<% if @sample %>
-  <% @sample.each do |card| %>
-  <%= image_tag card, width:"14%"%>
-  <% end %>
-<% end %>
