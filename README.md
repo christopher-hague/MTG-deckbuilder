@@ -1,3 +1,2 @@
--To do:
-
-  Customize Deck list for cards show page to show only user decks
+Please run "rake db:create" and "rake db:migrate" before running a server.
+Thank you!
