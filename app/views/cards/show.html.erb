@@ -24,12 +24,18 @@
       </p>
       <%= f.submit "ADD", class: "btn btn-primary"%>
       <% end %>
-      <%= form_for @card, method: :delete do |f| %>
-      <p>
-        Delete card from: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
-      </p>
-      <%= f.submit "REMOVE", :data => {:confirm => "Are you sure you want to delete #{@card.name}?"}, class: "btn btn-primary"%>
-      <% end %>
+      <% @user.decks.each do |deck| %>
+        <% deck.cards.each do |card| %>
+          <%if card.name.include?("#{@card.name}") %>
+          <%= form_for @card, method: :delete do |f| %>
+          <p>
+            Delete card from: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
+          </p>
+          <%= f.submit "REMOVE", :data => {:confirm => "Are you sure you want to delete #{@card.name}?"}, class: "btn btn-primary"%>
+          <% end %>
+            <% end %>
+          <% end %>
+        <% end %>
     <% end %>
   </div>
 </div>
