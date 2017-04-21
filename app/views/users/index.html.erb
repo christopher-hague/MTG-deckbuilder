@@ -1,8 +1,28 @@
-<br />
-<br />
-<h1 id='test'>All Players</h1>
-<% @users.each do |user| %>
-  <h3><%= link_to user.name, user_path(user) %></h3>
-<% end %>
+<h1>All Players</h1>
+<div class="row">
+    <div class="col-md-4">
+      <h1>
+        Players
+      </h1>
+    </div>
+    <div class="col-md-8">
+      <h1>
+        Deck Count
+      </h1>
+    </div>
+</div>
 
-<!-- show each user, link to user show page, which will contain links to the show page of each of their decks -->
+<div class="row">
+  <% @users.each do |user| %>
+    <div class="col-md-4">
+      <h3>
+        <%= link_to user.name, user_path(user) %>
+      </h3>
+    </div>
+    <div class="col-md-8">
+      <h3>
+        <%=user.decks.count%>
+      </h3>
+    </div>
+  <% end %>
+</div>
