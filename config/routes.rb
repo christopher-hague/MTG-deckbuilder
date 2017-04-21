@@ -8,6 +8,7 @@ Rails.application.routes.draw do
 
   get '/cards/search', to: 'cards#search', as: :search
   get '/cards/search_results', to: 'cards#search_results', as: :search_result
+  get '/cards/search_type', to: 'cards#search_type', as: :search_type
   resources :cards, only: [:show, :index]
   patch '/cards/:id', to: 'cards#deck'
   delete '/cards/:id', to: 'cards#remove_card', as: :remove_card

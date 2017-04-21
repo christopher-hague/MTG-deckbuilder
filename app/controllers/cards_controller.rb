@@ -36,8 +36,16 @@ class CardsController < ApplicationController
   end
 
   def search_results
+    # debugger
     @cards = Card.where("upper(cards.name) like upper(?)", "%#{params[:query]}%")
    flash[:results] = "Here are your results for: #{params[:query]}"
+  end
+
+  def search_type
+    # debugger
+    @cards = Card.where("upper(cards.cardtype) like upper(?)", "%#{params[:query]}%")
+   flash[:results] = "Here are your results for: #{params[:query]}"
+   render search_result_path
   end
 
 
