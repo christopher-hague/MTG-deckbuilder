@@ -2,10 +2,13 @@
 <br />
 
 <h1>Card Info</h1>
+<h3>Name : <%= @card.name %></h3>
 
 <% unless !@card.image_url? %>
   <%= image_tag @card.image_url %>
   <% end %>
+  <h3>Card type: <%= @card.cardtype %></h3>
+  <h3>Card colors: <%= @card.color %></h3>
 
 
 <%if logged_in? && authenticate? %>

@@ -10,7 +10,7 @@ def cards_hash #loading db with card info
     cards_hash = JSON.parse(hash)
     cards_hash["cards"].each do |card|
 
-      Card.create(name: card["name"], image_url: card["imageUrl"])
+      Card.create(name: card["name"], image_url: card["imageUrl"], cardtype: card["type"], color: card["colors"])
 
     end
     counter += 1
