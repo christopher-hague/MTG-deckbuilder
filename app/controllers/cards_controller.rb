@@ -28,11 +28,17 @@ class CardsController < ApplicationController
   end
 
   def remove_card
-    @deck = Deck.find(params[:card][:decks])
-    @card = @deck.cards.find(params[:id])
-    @card.delete
-    flash[:message] = "Deleted from your deck!"
-    redirect_to deck_path(@deck)
+      # debugger
+    if @deck_card = DeckCard.find_by(deck_id: (params[:card][:decks]), card_id: params[:id])
+      @deck_card = DeckCard.find_by(deck_id: (params[:card][:decks]), card_id: params[:id])
+      @deck_card.delete
+      flash[:message] = "Deleted from your deck!"
+      redirect_to deck_path(params[:card][:decks])
+    else
+      # debugger
+      flash[:message] = "You don't have this in #{Deck.find(params[:card][:decks]).name} deck!"
+      redirect_to card_path(params[:id])
+    end
   end
 
   def search_results

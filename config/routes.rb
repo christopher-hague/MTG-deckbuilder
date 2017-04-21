@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   resources :cards, only: [:show, :index]
   patch '/cards/:id', to: 'cards#deck'
   delete '/cards/:id', to: 'cards#remove_card', as: :remove_card
-
+  
 
   get '/decks/:id/sample', to: 'decks#sample_hand', as: :sample
   resources :decks, only: [:new, :create, :show]

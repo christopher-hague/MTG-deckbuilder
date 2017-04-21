@@ -5,9 +5,14 @@
         Players
       </h1>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <h1>
         Deck Count
+      </h1>
+    </div>
+    <div class="col-md-4">
+      <h1>
+        Total Card Count
       </h1>
     </div>
 </div>
@@ -19,9 +24,14 @@
         <%= link_to user.name, user_path(user) %>
       </h3>
     </div>
-    <div class="col-md-8">
+    <div class="col-md-4">
       <h3>
         <%=user.decks.count%>
+      </h3>
+    </div>
+    <div class="col-md-4">
+      <h3>
+        <%=user.cards.count%>
       </h3>
     </div>
   <% end %>

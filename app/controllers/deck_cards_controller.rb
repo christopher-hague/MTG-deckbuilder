@@ -7,6 +7,7 @@ class DeckCardsController < ApplicationController
       params[:quantity].to_i.times do
         DeckCard.create(deck_card_params)
       end
+      flash[:message] = "#{@deck_card.card.name} added to your deck!"
       redirect_to @deck_card.deck
     else
       render 'cards/show'

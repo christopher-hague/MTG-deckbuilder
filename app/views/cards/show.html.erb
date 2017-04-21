@@ -1,3 +1,8 @@
+<div class="alert alert-danger" role="alert">
+  <h1> <%= flash[:message]%>
+  </h1>
+</div>
+
 <div class="row">
   <div class="col-md-3 col-md-offset-1"><h1>Card Info</h1></div>
 </div>
@@ -24,9 +29,8 @@
       </p>
       <%= f.submit "ADD", class: "btn btn-primary"%>
       <% end %>
-      <% @user.decks.each do |deck| %>
-        <% deck.cards.each do |card| %>
-          <%if card.name.include?("#{@card.name}") %>
+      <% @user.cards.each do |card| %>
+          <% if card.id == @card.id %>
           <%= form_for @card, method: :delete do |f| %>
           <p>
             Delete card from: <%= f.collection_select :decks, @user.decks.order('name asc'), :id, :name %><br />
@@ -35,7 +39,6 @@
           <% end %>
             <% end %>
           <% end %>
-        <% end %>
     <% end %>
   </div>
 </div>

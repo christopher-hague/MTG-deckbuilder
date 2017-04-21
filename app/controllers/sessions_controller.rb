@@ -1,5 +1,5 @@
 class SessionsController < ApplicationController
-  
+
 
   def create
     #byebug
@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:id] = @user.id
       redirect_to user_path(@user)
     else
+      flash[:message] = "Incorrect Log In Information"
       redirect_to login_path
     end
   end
