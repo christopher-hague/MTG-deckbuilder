@@ -1,7 +1,9 @@
+<% if flash[:message].present? %>
 <div class="alert alert-danger" role="alert">
   <h1> <%= flash[:message]%>
   </h1>
 </div>
+<% end %>
 
 <div class="row">
   <div class="col-md-3 col-md-offset-1"><h1>Card Info</h1></div>

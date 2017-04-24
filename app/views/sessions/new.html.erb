@@ -1,7 +1,9 @@
+<% if flash[:message].present? %>
 <div class="alert alert-danger" role="alert">
   <h1> <%= flash[:message]%>
   </h1>
 </div>
+<% end %>
 <h1>Please Log In</h1>
 
 <%= form_tag '/sessions' do %>
