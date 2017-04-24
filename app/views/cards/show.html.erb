@@ -12,13 +12,27 @@
     <div class="text-right">
       <% unless !@card.image_url? %>
         <%= image_tag @card.image_url %>
+        <% else %>
+        <br />
+        <h2>
+          Sorry, no image available
+        </h2>
       <% end %>
     </div>
   </div>
   <div class="col-md-9">
     <h3>Name : <%= @card.name %></h3>
     <h3>Card type: <%= @card.cardtype %></h3>
-    <h3>Card colors: <%= @card.color %></h3>
+      <% if @card.color.present? %>
+      <h3>Card colors:
+      <%= @card.color.gsub(/[\[\]\"]/, "") %>
+      </h3>
+      <% else %>
+      <h3>Card colors:
+        None
+      </h3>
+      <% end %>
+
     <%if logged_in? && authenticate? %>
       <%= form_for @deck_card do |f| %>
       <p>
