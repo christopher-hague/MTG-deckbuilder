@@ -18,6 +18,3 @@ class SessionsController < ApplicationController
     redirect_to home_path
   end
 end
-
-# Start decks,
-  # get views functioning

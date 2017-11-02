@@ -2,16 +2,19 @@
 
 
 <% if @user.decks.present? %>
-  <h2>Here are your decks:</h2>
+
+  <% if session[:id] == @user.id %>
+    <h2>Here are your decks:</h2>
+  <% else %>
+    <h2>Here are <%= @user.name %>'s' decks:</h2>
+  <% end%>
+
+
   <% @user.decks.each_with_index do |deck, index| %>
-  <h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
+    <h2><%= link_to deck.name, deck_path(deck)  %></h2><br />
   <% end %>
 <% end %>
 
 <% if logged_in? && authenticate?%>
   <h2><%= link_to "Create New Deck", new_deck_path %></h2>
-  <p></p>
-      <%= form_tag "/users/#{@user.id}", method: "delete" do %>
-      <%= submit_tag "Delete Target Player" %>
-    <% end %>
 <% end %>
